@@ -1,10 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Provider } from 'react-redux';
+import store from './configureStore';
+
+import App from './containers/App/index';
+import SignInPage from './containers/SignInPage/index';
+import SignUpPage from './containers/SignUpPage/index';
+import NotFoundPage from './containers/NotFoundPage/index';
+import PostDetailPage from './containers/PostDetailPage/index';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import * as path from './constants/configPath';
+
+import 'fontisto/css/fontisto/fontisto.min.css';
+import './styles/main.scss';
+
+const NODE_MOUNT = document.getElementById('root');
+ReactDOM.render(
+    <Provider store={store}>
+        <Router>
+            <Switch>
+                <Route exact component={App} path={path.HOME} />
+                <Route exact path={path.POST} component={App} />
+                <Route path={path.SIGNIN} component={SignInPage} />
+                <Route path={path.POSTDETAIL} component={PostDetailPage} />
+                <Route path={path.SIGNUP} component={SignUpPage} />
+                <Route path={path.NOTFOUND} component={NotFoundPage} />
+            </Switch>
+        </Router>
+    </Provider>,
+    NODE_MOUNT
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

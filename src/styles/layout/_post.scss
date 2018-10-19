@@ -1,0 +1,80 @@
+$widthAvatar: 35px;
+$heightAvatar: 35px;
+.post {
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0px 4px 9px 0px #dcdcdc;
+    &__info {
+        @include flex(space-between, center, row, wrap);
+        margin-bottom: 1.6rem;
+        .authorDesc{
+            @include flex(center, center, row, wrap);
+            &__Avatar {
+                @include flex(center, center, row, wrap);
+                @include size($widthAvatar, $heightAvatar);
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0px 0px 3px 1px #46464685;
+                margin-right: 15px;
+                img{
+                    max-width: 100%;
+                    min-height: 100%;
+                }
+            }
+            &__NameDate{
+                .authorName{
+                    color: #4f4fca;
+                    font-size: 14px;
+                    display: inline-block;
+                    margin-bottom: 4px;
+                    font-family: monospace;
+                }
+                .date{
+                    color: grey;
+                    font-size: 11px;
+                    font-weight: bold;
+                }
+            }
+        }
+        .operate{
+            .btnLike {
+                .fi{
+                    font-size: 13px !important;
+                }
+            }
+        }
+    }
+    &__content{
+        .post__main{
+            color: #6d6d6d;
+            font: {
+                size: 14px;
+                family: monospace;
+                weight: bold;
+            }
+            text-indent: 1rem;
+            text-align: justify;
+        }
+    }
+    &__desc{
+        text-align: right;
+        font-size: 12px;
+        margin-top: 10px;
+        color: grey;
+        font-weight: bold;
+        &--amountLike{
+            span{
+                margin-right: 5px;
+                font-size: 15px;
+                display: inline-block;
+            }
+        }
+        .oneBlockDesc{
+            margin-right: 10px;
+        }
+    }
+    &--white{
+        background: #fff;
+    }
+}

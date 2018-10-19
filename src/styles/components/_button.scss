@@ -1,0 +1,32 @@
+.btns {
+  width: 100%;
+  text-align: center;
+  &--pushStatus{
+    background: #fff  !important;
+    height: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+}
+.btn--login, .btn--signup{
+  border-radius: 999px !important;
+  -webkit-border-radius: 999px !important;
+  -moz-border-radius: 999px !important;
+  -ms-border-radius: 999px !important;
+  -o-border-radius: 999px !important;
+}
+.btn__icon{
+  width: 40px;
+  height: 40px;
+  min-width: auto !important;
+  border-radius: 50% !important;
+  background: #737373 !important;
+  margin: 0 5px !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+}
+  
