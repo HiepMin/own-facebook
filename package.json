@@ -8,6 +8,7 @@
     "firebase": "^5.5.5",
     "fontisto": "^3.0.4",
     "immutable": "^3.8.2",
+    "moment": "^2.22.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-loadable": "^5.5.0",

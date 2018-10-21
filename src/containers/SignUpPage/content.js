@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Wrapper from './Wrapper';
+import { Redirect } from 'react-router-dom';
 import InputField from './../../components/InputField/index';
 import { Button } from '@material-ui/core';
 import { Field } from 'redux-form';
@@ -7,9 +8,13 @@ import { Required, EmailFormat } from './../../components/Validate/index';
 import TitleForm from './../../components/TitleForm/index';
 import Note from './../../components/Note/index';
 import * as path from './../../constants/configPath';
+import firebase from './../../firebase/config';
+
 class SignUpContent extends Component {
   render() {
-    const { handleSubmit, submitting } = this.props;
+    const { handleSubmit, submitting, auth } = this.props;
+    if (auth.uid) return <Redirect to={path.HOME} />
+    console.log(this.props);
     return (
       <Wrapper>
         <form
@@ -70,9 +75,18 @@ class SignUpContent extends Component {
       </Wrapper>
     );
   }
-  submitForm = values => {
-    console.log(values);
+  submitForm = credentials => {
+    firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+      .then(user => {
+        firebase.firestore().collection('users').doc(user.user.uid).set({
+          username: credentials.username,
+        })
+        .then(() => {
+          firebase.auth().signOut();
+        })
+        .catch(err => console.log(err))
+      })  
+      .catch(err => console.log(err))
   }
 }
-
 export default SignUpContent;

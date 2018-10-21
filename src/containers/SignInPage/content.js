@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Field } from 'redux-form';
 import Wrapper from './Wrapper';
 import InputField from './../../components/InputField/index';
@@ -9,7 +9,8 @@ import { Required, EmailFormat } from './../../components/Validate/index';
 import * as path from './../../constants/configPath';
 class SignInContent extends Component {
   render(){
-    const { handleSubmit, submitting } = this.props;
+    const { handleSubmit, submitting, auth } = this.props;
+    if (auth.uid) return <Redirect to={path.HOME} />
     return (
       <Wrapper>
         <form onSubmit={handleSubmit(this.submitForm)} className="form form--login">
@@ -66,7 +67,7 @@ class SignInContent extends Component {
     )
   }  
   submitForm = user => {
-    console.log(user);
+    this.props.Login(user);
   } 
 }
 SignInContent.propTypes = {

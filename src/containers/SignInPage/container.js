@@ -2,14 +2,13 @@ import SignInContent from './content';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-const mapStateToProps = state => {
-  return {
-      state
-  }
-}
+import { Act_Login } from './action';
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+})
 const mapDispatchToProps = dispatch => {
   return {
-    dispatch
+    Login: credentials => dispatch(Act_Login(credentials)),
   }
 }
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
